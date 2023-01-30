@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\MainPagesController;
+use App\Http\Controllers\ServicePagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PagesController::class,'index'])->name('pages.index');
+Route::get('/admin/dashboard',[PagesController::class,'dashboard'])->name('pages.dashboard');
+Route::get('/admin/main',[MainPagesController::class,'index'])->name('pages.main');
+Route::put('/admin/main',[MainPagesController::class,'update'])->name('pages.main.update');
+Route::get('/admin/services',[ServicePagesController::class,'create'])->name('pages.services.create');
+Route::post('/admin/services',[ServicePagesController::class,'store'])->name('pages.services.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
