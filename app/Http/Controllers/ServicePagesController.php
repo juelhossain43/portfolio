@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,10 @@ class ServicePagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        $portfolios= Portfolio::all();
+        return view('pages.services.list',compact('portfolios'));
     }
 
     /**
@@ -70,7 +72,8 @@ class ServicePagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service=Service::find($id);
+        return view('pages.services.edit',compact('service'));
     }
 
     /**
@@ -82,7 +85,20 @@ class ServicePagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'icon'=>'required|string',
+            'title'=>'required|string',
+            'description'=>'required'
+        ]);
+        $service= Service::findOrFail($id);
+        $service->icon=$request->icon;
+        $service->title=$request->title;
+        $service->description=$request->description;
+
+        $service->save();
+        flash()->addSuccess('Service Update Successfully');
+
+        return redirect()->route('pages.services.list');
     }
 
     /**
@@ -91,8 +107,13 @@ class ServicePagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $service= Service::findOrFail($id);
+        $service->delete();
+
+        flash()->addDeleted('Service Delete Successfully');
+
+        return redirect()->route('pages.services.list');
     }
 }

@@ -52,7 +52,7 @@
                     <a class="nav-link" href="{{route('pages.main')}}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
                         Main
-
+{{--//service--}}
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Services
@@ -61,16 +61,27 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{route('pages.services.create')}}">Create</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">List</a>
+                                <a class="nav-link" href="{{route('pages.services.list')}}">List</a>
                             </nav>
                         </div>
-                    <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fa-sharp fa-solid fa-images"></i></div>
-                        Portfolio
-                    </a> <a class="nav-link" href="charts.html">
+{{--                        portpolio--}}
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Portfolio
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{route('pages.portfolio.create')}}">Create</a>
+                                <a class="nav-link" href="{{route('pages.portfolio.list')}}">List</a>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link" href="charts.html">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                         About
-                    </a></a> <a class="nav-link" href="charts.html">
+                    </a>
+                    </a> <a class="nav-link" href="charts.html">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-envelope"></i></div>
                         contract
                     </a>
